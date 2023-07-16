@@ -23,6 +23,20 @@ def html_to_pdf():
     pdf = pdfkit.from_string(html, False, options={'title': title})
     return jsonify({'pdf': base64.b64encode(pdf).decode('utf-8')})
 
+@app.route('/about', methods=['GET'])
+@app.route('/version', methods=['GET'])
+def about():
+    return {
+        'service': 'HTML2PDF Microservice',
+        'source':'https://github.com/mctlisboa/html2pdf',
+        'version': '0.1.0',
+        'description': 'A microservice that converts HTML to PDF, built using Flask, pdfkit/wkhtmltopdf.',
+        'creator': {
+            'name': 'Marcos Lisboa',
+            'github': 'https://github.com/mctlisboa/',
+        },
+    }
+
 @auth.verify_password
 def verify_password(username, password):
     if username == os.getenv('BASIC_AUTH_USERNAME') and password == os.getenv('BASIC_AUTH_PASSWORD'):
