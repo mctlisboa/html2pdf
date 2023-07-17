@@ -9,6 +9,8 @@ __pycache__/
 *$py.class
 *.log
 
+test/
+
 # Virtual environments
 venv/
 *.venv
