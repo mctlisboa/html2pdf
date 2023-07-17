@@ -109,5 +109,18 @@ Or if you used `docker run`, find the container ID with `docker ps`, then stop i
 ## Running in Production
 For production use, we recommend using a reverse proxy like Nginx or a load balancer in front of the service. For managing the Docker containers in production, consider using a container orchestration system like Kubernetes or Docker Swarm.
 
+## Troubleshooting
+
+### Issue: JSON Syntax Error due to Double Quotes in HTML Content
+
+When sending a JSON payload to the microservice, you may encounter an issue where double quotes (") within the HTML content interfere with the JSON syntax, causing a syntax error. This happens because in JSON, string values must be written with double quotes. If your HTML content includes double quotes (for example, to define attribute values in HTML tags), these could conflict with the JSON formatting.
+
+### Solution
+To resolve this issue, you must ensure that the double quotes within the HTML string are properly escaped. This is typically achieved by prefixing the double quotes with a backslash `(\")`.
+
+However, if you're constructing the JSON payload using a built-in function in your programming language, like `json.dumps()` in Python or `JSON.stringify()` in JavaScript, these functions should automatically escape the double quotes for you.
+
+If you're still encountering issues despite properly escaping the double quotes in your HTML, please verify that you're constructing your JSON payload correctly and that the rest of your HTML content is properly formatted.
+
 ## License
 This project is open source, under the terms of the MIT license.
