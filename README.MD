@@ -113,10 +113,10 @@ For production use, we recommend using a reverse proxy like Nginx or a load bala
 
 ### Issue: JSON Syntax Error due to Double Quotes in HTML Content
 
-When sending a JSON payload to the microservice, you may encounter an issue where double quotes (") within the HTML content interfere with the JSON syntax, causing a syntax error. This happens because in JSON, string values must be written with double quotes. If your HTML content includes double quotes (for example, to define attribute values in HTML tags), these could conflict with the JSON formatting.
+When sending a JSON payload to the microservice, you may encounter an issue where double quotes `"` within the HTML content interfere with the JSON syntax, causing a syntax error. This happens because in JSON, string values must be written with double quotes. If your HTML content includes double quotes (for example, to define attribute values in HTML tags), these could conflict with the JSON formatting.
 
 ### Solution
-To resolve this issue, you must ensure that the double quotes within the HTML string are properly escaped. This is typically achieved by prefixing the double quotes with a backslash `(\")`.
+To resolve this issue, you must ensure that the double quotes within the HTML string are properly escaped. This is typically achieved by prefixing the double quotes with a backslash `\"`.
 
 However, if you're constructing the JSON payload using a built-in function in your programming language, like `json.dumps()` in Python or `JSON.stringify()` in JavaScript, these functions should automatically escape the double quotes for you.
 
